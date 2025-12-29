@@ -1,0 +1,86 @@
+\begin{thebibliography}{1}
+\urlstyle{rm}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname doiprefix\endcsname\relax\def\doiprefix{DOI: }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{GAN}
+\bibinfo{author}{Lei, B.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Skin lesion segmentation via
+  generative adversarial networks with dual discriminators}}.
+\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
+  \textbf{\bibinfo{volume}{64}}, \bibinfo{pages}{101716},
+  \doiprefix\url{https://doi.org/10.1016/j.media.2020.101716}
+  (\bibinfo{year}{2020}).
+
+\bibitem{Deeplab}
+\bibinfo{author}{Bagheri, F.}, \bibinfo{author}{Tarokh, M.~J.} \&
+  \bibinfo{author}{Ziaratban, M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Skin lesion segmentation from
+  dermoscopic images by using mask r-cnn, retina-deeplab, and graph-based
+  methods}}.
+\newblock {\emph{\JournalTitle{Biomedical Signal Processing and Control}}}
+  \textbf{\bibinfo{volume}{67}}, \bibinfo{pages}{102533},
+  \doiprefix\url{https://doi.org/10.1016/j.bspc.2021.102533}
+  (\bibinfo{year}{2021}).
+
+\bibitem{GlobalCancer}
+\bibinfo{author}{Sung, H.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Global cancer statistics 2020:
+  Globocan estimates of incidence and mortality worldwide for 36 cancers in 185
+  countries}}.
+\newblock {\emph{\JournalTitle{CA: A Cancer Journal for Clinicians}}}
+  \textbf{\bibinfo{volume}{71}}, \bibinfo{pages}{209--249},
+  \doiprefix\url{https://doi.org/10.3322/caac.21660} (\bibinfo{year}{2021}).
+\newblock
+  \eprint{https://acsjournals.onlinelibrary.wiley.com/doi/pdf/10.3322/caac.21660}.
+
+\bibitem{Melanoma}
+\bibinfo{author}{Siegel, R.~L.}, \bibinfo{author}{Miller, K.~D.} \&
+  \bibinfo{author}{Jemal, A.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Cancer statistics, 2019}}.
+\newblock {\emph{\JournalTitle{CA: A Cancer Journal for Clinicians}}}
+  \textbf{\bibinfo{volume}{69}}, \bibinfo{pages}{7--34},
+  \doiprefix\url{https://doi.org/10.3322/caac.21551} (\bibinfo{year}{2019}).
+\newblock
+  \eprint{https://acsjournals.onlinelibrary.wiley.com/doi/pdf/10.3322/caac.21551}.
+
+\bibitem{FCN}
+\bibinfo{author}{Adegun, A.} \& \bibinfo{author}{Viriri, S.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Deep learning model for skin lesion
+  segmentation: Fully convolutional network}}.
+\newblock {\emph{\JournalTitle{Image Analysis and Recognition}}}
+  \bibinfo{pages}{232--242} (\bibinfo{year}{2019}).
+
+\bibitem{UNet}
+\bibinfo{author}{Liu, L.}, \bibinfo{author}{Mou, L.}, \bibinfo{author}{Zhu,
+  X.~X.} \& \bibinfo{author}{Mandal, M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Skin lesion segmentation based on
+  improved u-net}}.
+\newblock {\emph{\JournalTitle{2019 IEEE Canadian Conference of Electrical and
+  Computer Engineering (CCECE)}}} \bibinfo{pages}{1--4},
+  \doiprefix\url{10.1109/CCECE.2019.8861848} (\bibinfo{year}{2019}).
+
+\bibitem{Transformer}
+\bibinfo{author}{Wu, H.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Fat-net: Feature adaptive
+  transformers for automated skin lesion segmentation}}.
+\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
+  \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{102327},
+  \doiprefix\url{https://doi.org/10.1016/j.media.2021.102327}
+  (\bibinfo{year}{2022}).
+
+\bibitem{AttentionGates}
+\bibinfo{author}{Arora, R.}, \bibinfo{author}{Raman, B.},
+  \bibinfo{author}{Nayyar, K.} \& \bibinfo{author}{Awasthi, R.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Automated skin lesion segmentation
+  using attention-based deep convolutional neural network}}.
+\newblock {\emph{\JournalTitle{Biomedical Signal Processing and Control}}}
+  \textbf{\bibinfo{volume}{65}}, \bibinfo{pages}{102358},
+  \doiprefix\url{https://doi.org/10.1016/j.bspc.2020.102358}
+  (\bibinfo{year}{2021}).
+
+\end{thebibliography}

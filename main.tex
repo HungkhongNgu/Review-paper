@@ -1,0 +1,116 @@
+\documentclass[fleqn,10pt]{wlscirep}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\title{DEEP LEARNING FOR SKIN LESION SEGMENTATION: A REVIEW}
+
+\author[1,*]{Duy Hung BUI}
+\author[2,+]{Huy Hoang VU}
+
+\affil[1]{202412987, Hanoi University of Science and Technology, Hanoi, Vietnam}
+\affil[2]{202412982, Hanoi University of Science and Technology, Hanoi, Vietnam}
+
+%\keywords{Keyword1, Keyword2, Keyword3}
+
+\begin{abstract}
+Skin lesion segmentation is a prominent research topic in medical image processing, which could facilitate the early diagnosis of skin diseases. Over the past few decades, the field has witnessed a considerable advancements in Deep Learning architectures, beginning with the dominance of Convolutional Neural Networks (CNNs) such as U-Net to hybrid Vision Transformers (ViT), leveraging Attention mechanisms. This paper provides a comprehensive review of the skin lesion analysis pipeline, covering pre-processing, data augmentation, segmentation, and classification. The paper comprehensively compares state-of-the-art techniques for skin lesion segmentation, highlights current limitations and identifies promising directions for developing diagnostic systems. 
+\end{abstract}
+\begin{document}
+
+\flushbottom
+\maketitle
+% * <john.hammersley@gmail.com> 2015-02-09T12:07:31.197Z:
+%
+%  Click the title above to edit the author information and abstract
+%
+\thispagestyle{empty}
+
+\noindent Please note: Abbreviations should be introduced at the first mention in the main text – no abbreviations lists. Suggested structure of main text (not enforced) is provided below\cite{GAN}.
+
+\section*{Introduction}
+
+The Introduction section, of referenced text\cite{Deeplab} expands on the background of the work (some overlap with the Abstract is acceptable). The introduction should not include subheadings.
+
+\section*{Results}
+
+Up to three levels of \textbf{subheading} are permitted. Subheadings should not be numbered.
+
+\subsection*{Subsection}
+
+Example text under a subsection. Bulleted lists may be used where appropriate, e.g.
+
+\begin{itemize}
+\item First item
+\item Second item
+\end{itemize}
+
+\subsubsection*{Third-level section}
+ 
+Topical subheadings are allowed.
+
+\section*{Introduction}
+
+
+The skin serves as a vital interface between the human body and the external environment, governing essential functions such as temperature regulation and fluid retention. Despite its resilience, the skin is prone to a multitude of pathologies. It is estimated that there are over 3,000 distinct types of dermatological disorders, making skin diseases one of the most prevalent and diagnostically challenging health concerns worldwide. Global Cancer Statistics 2020 states that fatal skin lesions claim thousands of lives annually \cite{GlobalCancer}. More precisely, skin cancer ranks as the third most common human malignancy, with melanoma being its most aggressive and lethal form. Epidemiological data indicates a rapid surge in melanoma incidence over the last three decades. Notably, statistical projections estimated approximately 96,480 new diagnoses in the United States in 2019 \cite{Melanoma}.
+
+
+Dermoscopy, a non-invasive imaging technique, has improved diagnostic accuracy; however, manual interpretation of dermoscopic images is labor-intensive, subjective, and heavily dependent on the clinician's expertise. Consequently, Computer-Aided Diagnosis (CAD) systems have become indispensable tools in clinical dermatology. Within the CAD pipeline, skin lesion segmentation, the process of accurately delineating the lesion boundary from the surrounding healthy skin, is the most critical prerequisite.
+
+
+Accurate recognition of melanoma presents significant challenges due to several inherent complexities. Firstly, the low contrast between lesions and the surrounding healthy skin often creates ambiguous boundaries \cite{FCN}, \cite{GAN}, \cite{Deeplab}.  Secondly, high variability in patient-specific attributes, ranging from skin pigmentation and texture to lesion morphology, complicates the detection process \cite{UNet}, \cite{GAN}, \cite{Deeplab}, \cite{Transformer}. Furthermore, image quality is frequently compromised by various artifacts, including body hair, specular reflections, air bubbles, shadows, and inconsistent lighting conditions \cite{FCN}, \cite{UNet}, \cite{GAN}, \cite{Transformer}. Thirdly, the scarcity of high-quality annotated training data poses a severe constraint on the model's generalization capability. Fourthly, the class imbalance problem, where the lesion area is disproportionately smaller than the background, significantly impedes segmentation performance. Notably, these aforementioned occlusions and artifacts are pervasive in standard public dermoscopic datasets. Figure 1 visually exemplifies these impediments, highlighting the complexity involved in precise boundary delineation.
+
+While early Convolutional Neural Networks (CNNs) like FCN and SegNet demonstrated the feasibility of end-to-end segmentation, they were fundamentally constrained by the trade-off between context and localization. Specifically, the repeated down-sampling operations resulted in the degradation of high-frequency edge information. The emergence of U-Net revolutionized this landscape by introducing a novel mechanism: skip connections. These connections facilitate the direct concatenation of feature maps from the encoder to the decoder, enabling the network to combine semantic context with precise localization, a capability that has cemented U-Net's status as the dominant standard in the domain.
+
+\section*{Discussion}
+
+The Discussion should be succinct and must not contain subheadings.
+
+\section*{Methods}
+
+Topical subheadings are allowed. Authors must ensure that their Methods section includes adequate experimental and characterization data \cite{FCN}necessary for others in the field to reproduce their work.
+
+\bibliography{sample}
+
+\noindent LaTeX formats citations and references automatically using the bibliography records in your .bib file, which you can edit via the project menu \cite{AttentionGates}. Use the cite command for an inline citation,.
+
+For data citations of datasets uploaded to e.g. \emph{figshare}, please use the \verb|howpublished| option in the bib entry to specify the platform and the link, as in the \verb|Hao:gidmaps:2014| example in the sample bibliography file.
+
+\section*{Acknowledgements (not compulsory)}
+
+Acknowledgements should be brief, and should not include thanks to anonymous referees and editors, or effusive comments. Grant or contribution numbers may be acknowledged.
+
+\section*{Author contributions statement}
+
+Must include all authors, identified by initials, for example:
+A.A. conceived the experiment(s),  A.A. and B.A. conducted the experiment(s), C.A. and D.A. analysed the results.  All authors reviewed the manuscript. 
+
+\section*{Additional information}
+
+To include, in this order: \textbf{Accession codes} (where applicable); \textbf{Competing interests} (mandatory statement). 
+
+The corresponding author is responsible for submitting a \href{http://www.nature.com/srep/policies/index.html#competing}{competing interests statement} on behalf of all authors of the paper. This statement must be included in the submitted article file.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{Taxonomy}
+\caption{Legend (350 words max). Example legend text.}
+\label{fig:stream}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Condition & n & p \\
+\hline
+A & 5 & 0.1 \\
+\hline
+B & 10 & 0.01 \\
+\hline
+\end{tabular}
+\caption{\label{tab:example}Legend (350 words max). Example legend text.}
+\end{table}
+
+Figures and tables can be referenced in LaTeX using the ref command, e.g. Figure \ref{fig:stream} and Table \ref{tab:example}.
+
+\end{document}
