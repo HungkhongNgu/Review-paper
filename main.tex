@@ -25,13 +25,6 @@ Skin lesion segmentation is a prominent research topic in medical image processi
 %
 \thispagestyle{empty}
 
-Example text under a subsection. Bulleted lists may be used where appropriate, e.g.
-
-\begin{itemize}
-\item First item
-\item Second item
-\end{itemize}
-
 \section*{Introduction}
 
 
@@ -71,9 +64,22 @@ To visualize this landscape, \textbf{Fig. \ref{fig:taxonomy}} presents the taxon
     \item \textbf{Section VII:} concludes the paper and outlines future research directions.
 \end{itemize}
 
-\section*{Discussion}
+\section*{The Computational Pipeline \& Data Preparation}
 
-The Discussion should be succinct and must not contain subheadings.
+\subsection*{Data Pre-processing}
+
+Image pre-processing is a crucial stage, entailing several steps to improve, standardize, or prepare images for additional modeling or analysis. Standard preprocessing methods include resizing, normalization, noise reduction color space conversion, and contrast correction. It improves the images’ quality, uniformity, and effectiveness, which is crucial for computer vision tasks.
+
+\subsection*{Data Augmentation via Generative Adversarial Networks (GANs)}
+
+Deep learning models need to be trained on enormous amounts of data to prevent overfitting and attain superior performance. However, the data is limited for several reasons, including patient privacy and the high cost of collecting medical records. Data augmentation helps to tackle this issue by transforming the available data using some operations or procedures to increase the dataset. Numerous methods including rotation, random cropping, transpose, vertical flip, horizontal flip only produce variations of existing samples and fail to introduce sufficient diversity into the data distribution.
+
+Generative Adversarial Networks (GANs) have emerged as a breakthrough approach for synthetic data generation and robust feature learning.Fundamentally, a GAN architecture consists of two competing neural networks: a Generator  and a Discriminator ($D$). ($G$) aims to synthesize realistic skin lesion images from random noise distributions, while ($D$) acts as a binary classifier, attempting to distinguish between real clinical images and the synthetic ones produced by $G$. Through a min-max adversarial training process, $G$ progressively learns to produce high-fidelity lesion samples that capture the complex texture and color characteristics of real dermoscopic images, thereby enriching the training set and reducing the risk of overfitting. Beyond pure data synthesis, adversarial learning concepts have been successfully adapted to enhance segmentation performance directly. 
+
+%Figure of GAN
+
+A notable example is the work by Lei et al \cite{GAN}, who proposed a novel architecture featuring Dual Discriminators. In their framework, the segmentation network functions as the Generator, while two distinct Discriminators are employed to enforce structural consistency and boundary sharpness in the predicted masks. By subjecting the model to this "double scrutiny," the system learns to generate segmentation maps that are not only pixel-wise accurate but also visually consistent with expert annotations. This study demonstrates the versatile potential of GANs: acting as both a tool for data augmentation and a segmentation algorithm.
+
 
 \section*{Methods}
 

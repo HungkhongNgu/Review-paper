@@ -15,8 +15,6 @@
 \newblock {\emph{\JournalTitle{CA: A Cancer Journal for Clinicians}}}
   \textbf{\bibinfo{volume}{71}}, \bibinfo{pages}{209--249},
   \doiprefix\url{https://doi.org/10.3322/caac.21660} (\bibinfo{year}{2021}).
-\newblock
-  \eprint{https://acsjournals.onlinelibrary.wiley.com/doi/pdf/10.3322/caac.21660}.
 
 \bibitem{Melanoma}
 \bibinfo{author}{Siegel, R.~L.}, \bibinfo{author}{Miller, K.~D.} \&
@@ -25,15 +23,15 @@
 \newblock {\emph{\JournalTitle{CA: A Cancer Journal for Clinicians}}}
   \textbf{\bibinfo{volume}{69}}, \bibinfo{pages}{7--34},
   \doiprefix\url{https://doi.org/10.3322/caac.21551} (\bibinfo{year}{2019}).
-\newblock
-  \eprint{https://acsjournals.onlinelibrary.wiley.com/doi/pdf/10.3322/caac.21551}.
 
 \bibitem{FCN}
 \bibinfo{author}{Adegun, A.} \& \bibinfo{author}{Viriri, S.}
 \newblock \bibinfo{journal}{\bibinfo{title}{Deep learning model for skin lesion
   segmentation: Fully convolutional network}}.
 \newblock {\emph{\JournalTitle{Image Analysis and Recognition}}}
-  \bibinfo{pages}{232--242} (\bibinfo{year}{2019}).
+  \bibinfo{pages}{232--242},
+  \doiprefix\url{https://doi.org/10.1007/978-3-030-27272-2_20}
+  (\bibinfo{year}{2019}).
 
 \bibitem{GAN}
 \bibinfo{author}{Lei, B.} \emph{et~al.}
@@ -62,7 +60,8 @@
   improved u-net}}.
 \newblock {\emph{\JournalTitle{2019 IEEE Canadian Conference of Electrical and
   Computer Engineering (CCECE)}}} \bibinfo{pages}{1--4},
-  \doiprefix\url{10.1109/CCECE.2019.8861848} (\bibinfo{year}{2019}).
+  \doiprefix\url{https://doi.org/10.1109/CCECE.2019.8861848}
+  (\bibinfo{year}{2019}).
 
 \bibitem{Transformer}
 \bibinfo{author}{Wu, H.} \emph{et~al.}
