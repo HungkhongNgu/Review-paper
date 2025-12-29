@@ -25,28 +25,12 @@ Skin lesion segmentation is a prominent research topic in medical image processi
 %
 \thispagestyle{empty}
 
-\noindent Please note: Abbreviations should be introduced at the first mention in the main text – no abbreviations lists. Suggested structure of main text (not enforced) is provided below\cite{GAN}.
-
-\section*{Introduction}
-
-The Introduction section, of referenced text\cite{Deeplab} expands on the background of the work (some overlap with the Abstract is acceptable). The introduction should not include subheadings.
-
-\section*{Results}
-
-Up to three levels of \textbf{subheading} are permitted. Subheadings should not be numbered.
-
-\subsection*{Subsection}
-
 Example text under a subsection. Bulleted lists may be used where appropriate, e.g.
 
 \begin{itemize}
 \item First item
 \item Second item
 \end{itemize}
-
-\subsubsection*{Third-level section}
- 
-Topical subheadings are allowed.
 
 \section*{Introduction}
 
@@ -59,7 +43,33 @@ Dermoscopy, a non-invasive imaging technique, has improved diagnostic accuracy; 
 
 Accurate recognition of melanoma presents significant challenges due to several inherent complexities. Firstly, the low contrast between lesions and the surrounding healthy skin often creates ambiguous boundaries \cite{FCN}, \cite{GAN}, \cite{Deeplab}.  Secondly, high variability in patient-specific attributes, ranging from skin pigmentation and texture to lesion morphology, complicates the detection process \cite{UNet}, \cite{GAN}, \cite{Deeplab}, \cite{Transformer}. Furthermore, image quality is frequently compromised by various artifacts, including body hair, specular reflections, air bubbles, shadows, and inconsistent lighting conditions \cite{FCN}, \cite{UNet}, \cite{GAN}, \cite{Transformer}. Thirdly, the scarcity of high-quality annotated training data poses a severe constraint on the model's generalization capability. Fourthly, the class imbalance problem, where the lesion area is disproportionately smaller than the background, significantly impedes segmentation performance. Notably, these aforementioned occlusions and artifacts are pervasive in standard public dermoscopic datasets. Figure 1 visually exemplifies these impediments, highlighting the complexity involved in precise boundary delineation.
 
-While early Convolutional Neural Networks (CNNs) like FCN and SegNet demonstrated the feasibility of end-to-end segmentation, they were fundamentally constrained by the trade-off between context and localization. Specifically, the repeated down-sampling operations resulted in the degradation of high-frequency edge information. The emergence of U-Net revolutionized this landscape by introducing a novel mechanism: skip connections. These connections facilitate the direct concatenation of feature maps from the encoder to the decoder, enabling the network to combine semantic context with precise localization, a capability that has cemented U-Net's status as the dominant standard in the domain.
+
+While early Convolutional Neural Networks (CNNs) like Fully Connected Network (FCN) and SegNet demonstrated the feasibility of end-to-end segmentation, they were fundamentally constrained by the trade-off between context and localization. Specifically, the repeated down-sampling operations resulted in the degradation of high-frequency edge information. The emergence of U-Net revolutionized this landscape by introducing a novel mechanism: skip connections. These connections facilitate the direct concatenation of feature maps from the encoder to the decoder, enabling the network to combine semantic context with precise localization, a capability that has cemented U-Net's status as the dominant standard in the domain.
+
+
+Despite their prevalence, CNN-based architectures utilize a fixed local receptive field, which inherently limits their ability to capture long-range dependencies and global semantic context. Conversely, while Transformers successfully mitigate this limitation through the self-attention mechanism, they introduce a new bottleneck: computational inefficiency. Specifically, the standard self-attention operation scales quadratically with the input resolution ($O(N^2)$), rendering it computationally prohibitive for high-resolution medical images.
+
+
+This paper provides a comprehensive survey of the nascent Mamba architecture (Selective State Space Models) and its rapid adoption in medical imaging. Unlike previous reviews that focus primarily on CNNs or Transformers, we critically analyze the paradigm shift towards linear complexity models ($O(N)$). Specifically, we investigate the latest hybrid frameworks emerging in 2024, such as AC-MambaSeg, highlighting their ability to maintain global receptive fields while significantly reducing computational overhead compared to quadratic Transformer-based approaches.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{Taxonomy.jpg}
+\caption{Taxonomy of computational techniques for skin lesion segmentation utilized in this survey, categorizing methods from foundational CNNs to state-of-the-art Hybrid Mamba architectures.}
+\label{fig:taxonomy}
+\end{figure}
+
+
+To visualize this landscape, \textbf{Fig. \ref{fig:taxonomy}} presents the taxonomy of the computational techniques reviewed in this study. Consequently, the remainder of this paper is organized to reflect this evolutionary trajectory:
+\begin{itemize}
+    \item \textbf{Section II:} outlines the essential computational pipeline, discussing pre-processing techniques and the role of GANs in addressing data scarcity.
+    \item \textbf{Section III:} reviews the foundational era of CNN architectures, tracing the development from FCN and SegNet to the gold standard U-Net and its attention-based variants.
+    \item \textbf{Section IV:} analyzes the paradigm shift towards global context modeling, highlighting the strengths and computational limitations of Transformer-based approaches like FAT-Net.
+    \item \textbf{Section V:} investigates the emerging era of efficiency, specifically focusing on Mamba and hybrid State Space Models (e.g., AC-MambaSeg) that achieve linear complexity $O(N)$.
+    \item \textbf{Section VI:} provides a comparative analysis and discusses the trade-offs between these architectures.
+    \item \textbf{Section VII:} concludes the paper and outlines future research directions.
+\end{itemize}
 
 \section*{Discussion}
 
@@ -89,14 +99,6 @@ A.A. conceived the experiment(s),  A.A. and B.A. conducted the experiment(s), C.
 To include, in this order: \textbf{Accession codes} (where applicable); \textbf{Competing interests} (mandatory statement). 
 
 The corresponding author is responsible for submitting a \href{http://www.nature.com/srep/policies/index.html#competing}{competing interests statement} on behalf of all authors of the paper. This statement must be included in the submitted article file.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{Taxonomy}
-\caption{Legend (350 words max). Example legend text.}
-\label{fig:stream}
-\end{figure}
-
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|l|l|}
@@ -111,6 +113,6 @@ B & 10 & 0.01 \\
 \caption{\label{tab:example}Legend (350 words max). Example legend text.}
 \end{table}
 
-Figures and tables can be referenced in LaTeX using the ref command, e.g. Figure \ref{fig:stream} and Table \ref{tab:example}.
+Figures and tables can be referenced in LaTeX using the ref command, e.g and Table \ref{tab:example}.
 
 \end{document}

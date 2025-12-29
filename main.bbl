@@ -7,26 +7,6 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem{GAN}
-\bibinfo{author}{Lei, B.} \emph{et~al.}
-\newblock \bibinfo{journal}{\bibinfo{title}{Skin lesion segmentation via
-  generative adversarial networks with dual discriminators}}.
-\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
-  \textbf{\bibinfo{volume}{64}}, \bibinfo{pages}{101716},
-  \doiprefix\url{https://doi.org/10.1016/j.media.2020.101716}
-  (\bibinfo{year}{2020}).
-
-\bibitem{Deeplab}
-\bibinfo{author}{Bagheri, F.}, \bibinfo{author}{Tarokh, M.~J.} \&
-  \bibinfo{author}{Ziaratban, M.}
-\newblock \bibinfo{journal}{\bibinfo{title}{Skin lesion segmentation from
-  dermoscopic images by using mask r-cnn, retina-deeplab, and graph-based
-  methods}}.
-\newblock {\emph{\JournalTitle{Biomedical Signal Processing and Control}}}
-  \textbf{\bibinfo{volume}{67}}, \bibinfo{pages}{102533},
-  \doiprefix\url{https://doi.org/10.1016/j.bspc.2021.102533}
-  (\bibinfo{year}{2021}).
-
 \bibitem{GlobalCancer}
 \bibinfo{author}{Sung, H.} \emph{et~al.}
 \newblock \bibinfo{journal}{\bibinfo{title}{Global cancer statistics 2020:
@@ -54,6 +34,26 @@
   segmentation: Fully convolutional network}}.
 \newblock {\emph{\JournalTitle{Image Analysis and Recognition}}}
   \bibinfo{pages}{232--242} (\bibinfo{year}{2019}).
+
+\bibitem{GAN}
+\bibinfo{author}{Lei, B.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Skin lesion segmentation via
+  generative adversarial networks with dual discriminators}}.
+\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
+  \textbf{\bibinfo{volume}{64}}, \bibinfo{pages}{101716},
+  \doiprefix\url{https://doi.org/10.1016/j.media.2020.101716}
+  (\bibinfo{year}{2020}).
+
+\bibitem{Deeplab}
+\bibinfo{author}{Bagheri, F.}, \bibinfo{author}{Tarokh, M.~J.} \&
+  \bibinfo{author}{Ziaratban, M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Skin lesion segmentation from
+  dermoscopic images by using mask r-cnn, retina-deeplab, and graph-based
+  methods}}.
+\newblock {\emph{\JournalTitle{Biomedical Signal Processing and Control}}}
+  \textbf{\bibinfo{volume}{67}}, \bibinfo{pages}{102533},
+  \doiprefix\url{https://doi.org/10.1016/j.bspc.2021.102533}
+  (\bibinfo{year}{2021}).
 
 \bibitem{UNet}
 \bibinfo{author}{Liu, L.}, \bibinfo{author}{Mou, L.}, \bibinfo{author}{Zhu,
