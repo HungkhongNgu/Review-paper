@@ -5,11 +5,8 @@
 \usepackage{indentfirst}
 \title{DEEP LEARNING FOR SKIN LESION SEGMENTATION: A REVIEW}
 
-\author[1,*]{Duy Hung BUI}
-\author[2,+]{Huy Hoang VU}
-
-\affil[1]{202412987, Hanoi University of Science and Technology, Hanoi, Vietnam}
-\affil[2]{202412982, Hanoi University of Science and Technology, Hanoi, Vietnam}
+\author[]{Duy Hung BUI 202412987}
+\author[]{Huy Hoang VU 202412982}
 
 %\keywords{Keyword1, Keyword2, Keyword3}
 
@@ -32,7 +29,7 @@
 
     Dermoscopy, a non-invasive imaging technique, has improved diagnostic accuracy; however, manual interpretation of dermoscopic images is labor-intensive, subjective, and heavily dependent on the clinician's expertise. Consequently, CAD systems have become indispensable tools in clinical dermatology. Within the CAD pipeline, skin lesion segmentation, the process of accurately delineating the lesion boundary from the surrounding healthy skin, is the most critical prerequisite.
     
-    Accurate recognition of melanoma presents significant challenges due to several inherent complexities. Firstly, the low contrast between lesions and the surrounding healthy skin often creates ambiguous boundaries \cite{FCN}, \cite{GAN}, \cite{Deeplab}.  Secondly, high variability in patient-specific attributes, ranging from skin pigmentation and texture to lesion morphology, complicates the detection process \cite{UNet}, \cite{GAN}, \cite{Deeplab}, \cite{Transformer}. Furthermore, image quality is frequently compromised by various artifacts, including body hair, specular reflections, air bubbles, shadows, and inconsistent lighting conditions \cite{FCN}, \cite{UNet}, \cite{GAN}, \cite{Transformer}. Thirdly, the scarcity of high-quality annotated training data poses a severe constraint on the model's generalization capability. Fourthly, the class imbalance problem, where the lesion area is disproportionately smaller than the background, significantly impedes segmentation performance. Notably, these aforementioned occlusions and artifacts are pervasive in standard public dermoscopic datasets. Figure 1 visually exemplifies these impediments, highlighting the complexity involved in precise boundary delineation.
+    Accurate recognition of melanoma presents significant challenges due to several inherent complexities. Firstly, the low contrast between lesions and the surrounding healthy skin often creates ambiguous boundaries \cite{FCN, GAN, Deeplab}.  Secondly, high variability in patient-specific attributes, ranging from skin pigmentation and texture to lesion morphology, complicates the detection process \cite{UNet, GAN,Deeplab, Transformer}. Furthermore, image quality is frequently compromised by various artifacts, including body hair, specular reflections, air bubbles, shadows, and inconsistent lighting conditions \cite{FCN, UNet, GAN,Transformer}. Thirdly, the scarcity of high-quality annotated training data poses a severe constraint on the model's generalization capability. Fourthly, the class imbalance problem, where the lesion area is disproportionately smaller than the background, significantly impedes segmentation performance. Notably, these aforementioned occlusions and artifacts are pervasive in standard public dermoscopic datasets. Figure 1 visually exemplifies these impediments, highlighting the complexity involved in precise boundary delineation.
 
         \begin{figure}[H]
         \centering
@@ -66,9 +63,13 @@
         A critical bottleneck in training medical image segmentation models is data scarcity and class imbalance. Malignant melanoma samples are often significantly underrepresented compared to benign nevi in public datasets. Traditional augmentation techniques, such as geometric transformations (rotation, flipping) and color jittering, are widely employed to artificially increase the dataset size. However, these methods only produce variations of existing samples and fail to introduce sufficient diversity into the data distribution.To address this limitation GANs have emerged as a breakthrough approach. Fundamentally, a GAN architecture consists of two competing neural networks: a Generator ($G$) and a Discriminator ($D$). The Generator aims to synthesize realistic lesion images from random noise distributions, while the Discriminator acts as a binary classifier, attempting to distinguish between real clinical images and the synthetic ones produced by $G$. Through a min-max adversarial training process, the Generator progressively learns to produce high-fidelity lesion samples that capture the complex texture and color characteristics of real dermoscopic images, thereby enriching the training set.
 
             \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.85\linewidth]{GAN.jpg}
+            \caption{The flowchart of Dual Discriminator GAN architecture. After the generator module, there are two discrimination branches. One uses the concatenation of the generated mask and the original image as input, the concatenation is performed along the channel. The other just employs the generated mask as input.}
+            \label{fig:GAN}
             \end{figure}
 
-        Beyond pure data synthesis, adversarial learning concepts have been successfully adapted to enhance segmentation performance directly. Dual Discriminators by Lei et al. \cite{GAN} deploy the segmentation network functions as the Generator, while two distinct Discriminators operate in parallel to supervise the output:
+        Beyond pure data synthesis, adversarial learning concepts have been successfully adapted to enhance segmentation performance directly. Dual Discriminators by Lei et al. \cite{GAN} deploy the segmentation network functions as the Generator, while two distinct Discriminators operate in parallel to supervise the output as \textbf{Fig. \ref{fig:GAN}}:
 
             \begin{itemize}
                 \item A Global Discriminator ensures the overall structural consistency of the predicted mask.
