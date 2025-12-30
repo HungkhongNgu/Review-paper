@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \urlstyle{rm}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -70,6 +70,23 @@
 \newblock {\emph{\JournalTitle{Medical Image Analysis}}}
   \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{102327},
   \doiprefix\url{https://doi.org/10.1016/j.media.2021.102327}
+  (\bibinfo{year}{2022}).
+
+\bibitem{Skin}
+\bibinfo{author}{Codella, N.} \emph{et~al.}
+\newblock \bibinfo{title}{Skin lesion analysis toward melanoma detection 2018:
+  A challenge hosted by the international skin imaging collaboration ({ISIC})}
+  (\bibinfo{year}{2019}).
+\newblock \eprint{1902.03368}.
+
+\bibitem{SegNet}
+\bibinfo{author}{{\c{S}}ahin, N.}, \bibinfo{author}{Alpaslan, N.} \&
+  \bibinfo{author}{Hanbay, D.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Robust optimization of segnet
+  hyperparameters for skin lesion segmentation}}.
+\newblock {\emph{\JournalTitle{Multimedia Tools and Applications}}}
+  \textbf{\bibinfo{volume}{81}}, \bibinfo{pages}{36031--36051},
+  \doiprefix\url{https://doi.org/10.1007/s11042-021-11032-6}
   (\bibinfo{year}{2022}).
 
 \bibitem{AttentionGates}
