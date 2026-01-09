@@ -53,6 +53,15 @@
   \doiprefix\url{https://doi.org/10.1016/j.bspc.2021.102533}
   (\bibinfo{year}{2021}).
 
+\bibitem{Transformer}
+\bibinfo{author}{Wu, H.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Fat-net: Feature adaptive
+  transformers for automated skin lesion segmentation}}.
+\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
+  \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{102327},
+  \doiprefix\url{https://doi.org/10.1016/j.media.2021.102327}
+  (\bibinfo{year}{2022}).
+
 \bibitem{UNet}
 \bibinfo{author}{Liu, L.}, \bibinfo{author}{Mou, L.}, \bibinfo{author}{Zhu,
   X.~X.} \& \bibinfo{author}{Mandal, M.}
@@ -62,15 +71,6 @@
   Computer Engineering (CCECE)}}} \bibinfo{pages}{1--4},
   \doiprefix\url{https://doi.org/10.1109/CCECE.2019.8861848}
   (\bibinfo{year}{2019}).
-
-\bibitem{Transformer}
-\bibinfo{author}{Wu, H.} \emph{et~al.}
-\newblock \bibinfo{journal}{\bibinfo{title}{Fat-net: Feature adaptive
-  transformers for automated skin lesion segmentation}}.
-\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
-  \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{102327},
-  \doiprefix\url{https://doi.org/10.1016/j.media.2021.102327}
-  (\bibinfo{year}{2022}).
 
 \bibitem{Skin}
 \bibinfo{author}{Codella, N.} \emph{et~al.}
@@ -98,5 +98,26 @@
   \textbf{\bibinfo{volume}{65}}, \bibinfo{pages}{102358},
   \doiprefix\url{https://doi.org/10.1016/j.bspc.2020.102358}
   (\bibinfo{year}{2021}).
+
+\bibitem{CBAMSNet}
+\bibinfo{author}{Wang, C.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Cbamsnet: A lightweight skin lesion
+  segmentation network with omni-dimensional dynamic convolution and cbam-based
+  multiscale attention}}.
+\newblock {\emph{\JournalTitle{Biomedical Signal Processing and Control}}}
+  \textbf{\bibinfo{volume}{113}}, \bibinfo{pages}{109239},
+  \doiprefix\url{https://doi.org/10.1016/j.bspc.2025.109239}
+  (\bibinfo{year}{2026}).
+
+\bibitem{Mamba}
+\bibinfo{author}{Nguyen, V.-T.}, \bibinfo{author}{Pham, V.-T.} \&
+  \bibinfo{author}{Tran, T.-T.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Ac-mambaseg: An adaptive
+  convolution and mamba-based architecture for enhanced skin lesion
+  segmentation}}.
+\newblock {\emph{\JournalTitle{Computational Intelligence Methods for Green
+  Technology and Sustainable Development}}} \bibinfo{pages}{13--26},
+  \doiprefix\url{https://doi.org/10.1007/978-3-031-76197-3_2}
+  (\bibinfo{year}{2024}).
 
 \end{thebibliography}

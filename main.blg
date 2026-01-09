@@ -5,46 +5,46 @@ Reallocating 'name_of_file' (item size: 1) to 14 items.
 The style file: naturemag-doi.bst
 Reallocating 'name_of_file' (item size: 1) to 7 items.
 Database file #1: sample.bib
-Warning--I didn't find a database entry for "CBAMSNet"
-You've used 10 entries,
+Warning--I didn't find a database entry for "U-Net"
+You've used 12 entries,
             2380 wiz_defined-function locations,
-            1067 strings with 11569 characters,
-and the built_in function-call counts, 4080 in all, are:
-= -- 281
-> -- 108
+            1083 strings with 12160 characters,
+and the built_in function-call counts, 4920 in all, are:
+= -- 343
+> -- 128
 < -- 0
-+ -- 54
-- -- 27
-* -- 515
-:= -- 456
-add.period$ -- 30
-call.type$ -- 10
-change.case$ -- 10
++ -- 64
+- -- 32
+* -- 614
+:= -- 549
+add.period$ -- 36
+call.type$ -- 12
+change.case$ -- 12
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 359
-empty$ -- 366
-format.name$ -- 37
-if$ -- 823
+cite$ -- 12
+duplicate$ -- 436
+empty$ -- 441
+format.name$ -- 44
+if$ -- 999
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 82
-newline$ -- 60
-num.names$ -- 10
-pop$ -- 59
+int.to.str$ -- 12
+missing$ -- 98
+newline$ -- 70
+num.names$ -- 12
+pop$ -- 71
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 78
+skip$ -- 99
 stack$ -- 0
-substring$ -- 178
-swap$ -- 356
+substring$ -- 216
+swap$ -- 428
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 21
-width$ -- 12
-write$ -- 127
+while$ -- 26
+width$ -- 14
+write$ -- 151
 (There was 1 warning)
