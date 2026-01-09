@@ -53,15 +53,6 @@
   \doiprefix\url{https://doi.org/10.1016/j.bspc.2021.102533}
   (\bibinfo{year}{2021}).
 
-\bibitem{Transformer}
-\bibinfo{author}{Wu, H.} \emph{et~al.}
-\newblock \bibinfo{journal}{\bibinfo{title}{Fat-net: Feature adaptive
-  transformers for automated skin lesion segmentation}}.
-\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
-  \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{102327},
-  \doiprefix\url{https://doi.org/10.1016/j.media.2021.102327}
-  (\bibinfo{year}{2022}).
-
 \bibitem{UNet}
 \bibinfo{author}{Liu, L.}, \bibinfo{author}{Mou, L.}, \bibinfo{author}{Zhu,
   X.~X.} \& \bibinfo{author}{Mandal, M.}
@@ -71,6 +62,15 @@
   Computer Engineering (CCECE)}}} \bibinfo{pages}{1--4},
   \doiprefix\url{https://doi.org/10.1109/CCECE.2019.8861848}
   (\bibinfo{year}{2019}).
+
+\bibitem{Transformer}
+\bibinfo{author}{Wu, H.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Fat-net: Feature adaptive
+  transformers for automated skin lesion segmentation}}.
+\newblock {\emph{\JournalTitle{Medical Image Analysis}}}
+  \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{102327},
+  \doiprefix\url{https://doi.org/10.1016/j.media.2021.102327}
+  (\bibinfo{year}{2022}).
 
 \bibitem{Skin}
 \bibinfo{author}{Codella, N.} \emph{et~al.}

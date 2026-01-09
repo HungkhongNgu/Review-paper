@@ -5,10 +5,9 @@ Reallocating 'name_of_file' (item size: 1) to 14 items.
 The style file: naturemag-doi.bst
 Reallocating 'name_of_file' (item size: 1) to 7 items.
 Database file #1: sample.bib
-Warning--I didn't find a database entry for "U-Net"
 You've used 12 entries,
             2380 wiz_defined-function locations,
-            1083 strings with 12160 characters,
+            1081 strings with 12150 characters,
 and the built_in function-call counts, 4920 in all, are:
 = -- 343
 > -- 128
@@ -47,4 +46,3 @@ warning$ -- 0
 while$ -- 26
 width$ -- 14
 write$ -- 151
-(There was 1 warning)

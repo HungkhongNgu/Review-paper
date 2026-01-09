@@ -34,7 +34,7 @@
 
     Dermoscopy, a non-invasive imaging technique, has improved the accuracy; however, manual interpretation of dermoscopic images is labor-intensive, subjective, and dependending heavily on the clinician's expertise. Therefore, CAD systems turn out to be indispensable tools in clinical dermatology. Within the CAD pipeline, skin lesion segmentation, which is the process of accurately delineating the lesion boundary from the surrounding healthy skin, is the most critical prerequisite.
     
-    Accurate recognition of melanoma is regarded as a significant challenge due to several inherent complexities. To begin with, the low contrast between lesions and the surrounding healthy skin often creates ambiguous boundaries \cite{FCN, GAN, Deeplab}.  Secondly, high variability in patient-specific attributes, ranging from skin pigmentation and texture to lesion morphology, complicates the detection process \cite{U-Net, GAN,Deeplab, Transformer}. Furthermore, image usually contains various artifacts, including body hair, specular reflections, air bubbles, shadows, and inconsistent lighting conditions \cite{FCN, UNet, GAN,Transformer}. Thirdly, the scarcity of high-quality annotated training data poses a severe constraint on the model's generalization capability. Fourthly, the class imbalance problem, where the lesion area is disproportionately smaller than the background, significantly impedes segmentation performance. Notably, these aforementioned occlusions and artifacts are pervasive in standard public dermoscopic datasets. Figure 1 visually exemplifies these impediments, showing the complexity in precise boundary delineation.
+    Accurate recognition of melanoma is regarded as challenges due to multiple of complexities. To begin with, the low contrast between lesions and the surrounding healthy skin often creates ambiguous boundaries \cite{FCN, GAN, Deeplab}.  Secondly, high variability in patient-specific attributes, ranging from skin pigmentation and texture to lesion morphology, complicates the detection process \cite{UNet, GAN, Deeplab, Transformer}. Furthermore, image usually contains various artifacts, including body hair, reflections, air bubbles, shadows, and inconsistent illuminating conditions \cite{FCN, UNet, GAN,Transformer}. Thirdly, the scarcity of training data leads to a severe constraint on the model's generalization capability. Fourthly, the class imbalance problem, where the lesion area is smaller than the background, significantly deters segmentation performance. Notably, these aforementioned occlusions and artifacts are pervasive in standard public dermoscopic datasets. Figure 1 visually exemplifies these impediments, showing the complexity in precise boundary delineation.
 
         \begin{figure}[H]
         \centering
@@ -52,7 +52,7 @@
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.65\linewidth]{Taxonomy.jpg}
-            \caption{Taxonomy of computational techniques for skin lesion segmentation utilized in this survey, categorizing methods from foundational CNNs to state-of-the-art Hybrid Mamba architectures.}
+            \caption{Taxonomy of computational techniques for skin lesion segmentation utilized in this survey, categorizing methods from foundational CNNs to hybrid Mamba models.}
             \label{fig:taxonomy}
         \end{figure}
 
@@ -77,32 +77,45 @@
             \label{fig:GAN}
             \end{figure}
 
-        Beyond pure data synthesis, adversarial learning concepts have succeeded in adapting to leverage segmentation performance directly. Dual Discriminators by Lei et al. \cite{GAN} deploy the segmentation network functions as the Generator, while two distinct Discriminators operate in parallel to supervise the output as \textbf{Fig. \ref{fig:GAN}}:
+        Dual Discriminators by Lei et al. \cite{GAN} is an example of succeeded adversarial learning in leveraging segmentation, using $G$ for segmentation, and two distinct $D$ to supervise the results as \textbf{Fig. \ref{fig:GAN}}:
 
             \begin{itemize}
-                \item A Global Discriminator ensures the overall structural consistency of the predicted mask.
-                \item A Local Discriminator focuses specifically on the boundary details, enforcing sharpness at the lesion edges.
+                \item A Global $D$ ensures the overall structural consistency of the predicted mask.
+                \item A Local $D$ concentrates more on the boundary details, especially the lesion edges.
             \end{itemize}
 
-        By subjecting the model to this "double scrutiny," the system learns to generate segmentation maps that are not only pixel-wise accurate but also visually consistent with expert annotations. This study demonstrates the versatile potential of GANs: acting as both a tool for data augmentation and a segmentation mechanism through adversarial loss.
+        The system of "double scrutiny" can learns to generate not only pixel-wise accurate but also visually consistent segmentation. This study has shown the versatile potential of GANs: acting as both a tool for data augmentation and a segmentation mechanism through adversarial loss.
 
     \section*{Optimizing Foundational CNN Architectures}
 
-        While early CNNs marked a paradigm shift from manual feature extraction to automated learning, vanilla architectures often struggle with the specific challenges of dermoscopy, such as fuzzy boundaries and low contrast. Consequently, the first era of advancement was defined not merely by the application of CNNs, but by the rigorous optimization of foundational architectures. This section categorizes these computational improvements into three strategic domains: structural refinement, receptive field expansion, and attention-based feature selection.
+        While early CNNs marked a noticeable change from manual feature extraction to automated learning, vanilla models often struggle with the specific challenges of dermoscopy, such as fuzzy boundaries and low contrast. Hence, the first era of advancement was defined not merely by the application of CNNs, but by the rigorous optimization of foundational architectures. This section categorizes these computational improvements into three strategic domains: structural improvement, receptive field expansion, and attention-based feature selection.
 
     \subsection*{Structural and Hyperparameter Optimization}
 
-        The transition from patch-based classification to pixel-wise segmentation was pioneered by FCNs. However, standard implementations often faced resolution loss during upsampling. To address this, FCN-based model optimized with a U-Net-like architecture \cite{FCN} was proposed. By adapting the FCN to learn end-to-end mappings while incorporating symmetric decoding paths, their approach effectively mitigates the loss of spatial information, demonstrating that FCNs can be structurally tuned to handle fine-grained lesion details.
+        The transition from patch-based classification to pixel-wise segmentation was pioneered by FCNs. However, the approach usually suffered from resolution loss during upsampling. To solve this, a author \cite{FCN} proposed a FCN-based model optimized with a U-Net-like architecture as \textbf{Fig. \ref{fig: FCN}}. By adapting the FCN to learn end-to-end mappings while incorporating symmetric decoding paths, the model is capable of minimizing the loss of spatial information, demonstrating that FCNs can be structurally managed to deal with quality lesion details.
 
-        Parallel to structural design, the optimization of training hyperparameters remains a critical yet often overlooked aspect. The SegNet architecture, known for its memory-efficient use of pooling indices, is highly sensitive to parameter initialization. Sahin et al. \cite{SegNet} introduced a Bayesian Optimized SegNet, replacing manual trial-and-error with a probabilistic approach. By employing Bayesian optimization to automatically search for the optimal learning rate and momentum within a complex search space, they achieved superior segmentation accuracy compared to standard SegNet implementations. This highlights that computational optimization in the training phase is as vital as the architectural design itself.
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.85\linewidth]{FCN.jpg}
+                \caption{The flowchart of U-Net like architecture bases on FCN model.}
+                \label{fig:FCN}
+            \end{figure}
 
-        Furthermore, the standard U-Net, despite being the gold standard, can propagate noise through its skip connections. Liu et al. \cite{UNet} proposed an Improved U-Net, which refines the encoder-decoder path to better preserve boundary information. By optimizing the internal feature concatenation process, this improved variant significantly reduces false positives at the lesion periphery compared to the classic U-Net.
+        Another method is to optimize the training hyperparameters. The SegNet architecture, known for its memory-efficient utilising pooling indices, is highly sensitive to parameter initialization. Sahin et al. \cite{SegNet} introduced a Bayesian Optimized SegNet which replaces manual trial-and-error by Bayesian probability. Compared with standard SegNet implementations, the model achieved superior segmentation accuracy by automatically searching for the optimal learning rate compared to standard SegNet implementations. This approach has proved that in training process, it is vital to optimize not only the architectural designs but also the computational methods.
 
     \subsection*{Expanding Receptive Fields via Dilated Convolutions}
+            
+        Standard U-Net model can be overfitting with small datasets, and limited by fixed receptive field. Liu et al. \cite{UNet} proposed an Improved U-Net \textbf{Fig. \ref{fig: UNet}} applying dialated convolution and batch normalization layer in the decoder to expand the receptive field. Therefore, the encoder-decoder path can preserve the edge information and cut down on false positives due to coarse boundary compared to the classic U-Net.
 
-        A fundamental limitation of the aforementioned encoder-decoder models is the reduction of spatial resolution caused by pooling layers, which leads to coarse segmentation boundaries. To expand the receptive field without sacrificing resolution, Bagheri et al. \cite{Deeplab} proposed a hybrid framework integrating RetinaNet with DeepLab.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.85\linewidth]{UNet.jpg}
+            \caption{The flowchart of Improved U-Net model with dialated convolution and batch normalization.}
+            \label{fig:UNet}
+        \end{figure}
 
-        The core innovation lies in the use of Atrous (Dilated) Convolution, which inserts holes (zeros) into the filters to enlarge the field of view. This allows the network to capture multi-scale contextual information—crucial for distinguishing large lesions from healthy skin—without increasing the number of parameters. Moreover, their approach goes beyond pure deep learning by incorporating a Graph-based refinement method in the post-processing stage. This hybrid pipeline, combining the object detection strength of RetinaNet, the semantic context of DeepLab, and the boundary precision of graph theory, exemplifies a sophisticated strategy to overcome the "local view" limitation of standard CNNs.
+
+        The author \cite{Deeplab} introduced a hybrid model between RetinaNet and DeepLab incorporating a Graph-based refinement algorithm for post-processing. The RetinaNet backbone is responsible for extracting multi-scale features, while the DeepLab module employs atrous spatial pyramid pooling (ASPP) to capture context at multiple scales. The graph-based refinement step further enhances boundary accuracy by modeling pixel relationships as a graph, allowing for more precise delineation of lesion edges. By combining the object detection strength of RetinaNet, the semantic context of DeepLab, and the boundary precision of graph theory, the method overcomes the local view limitation of standard CNNs.
 
     \subsection*{Feature Selection with Attention and Dynamic Mechanisms}
 
