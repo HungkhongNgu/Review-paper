@@ -9,8 +9,7 @@
 \usepackage{float}     % Để dùng [H] cố định vị trí
 \title{DEEP LEARNING FOR SKIN LESION SEGMENTATION: A REVIEW}
 
-\author[]{Duy Hung BUI 202412987}
-\author[]{Huy Hoang VU 202412982}
+\author[]{Duy Hung BUI 202412987 and Huy Hoang VU 202412982}
 
 %\keywords{Keyword1, Keyword2, Keyword3}
 
@@ -38,7 +37,7 @@
 
         \begin{figure}[H]
         \centering
-        \includegraphics[width=0.6\linewidth]{ISIC2018.png}
+        \includegraphics[width=0.8\linewidth]{ISIC2018.png}
         \caption{Dermoscopic images of some of the skin diseases from the ISIC 2016 dataset \cite{Skin}.}
         \label{fig:skindiseases}
         \end{figure}
@@ -51,7 +50,7 @@
         
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.65\linewidth]{Taxonomy.jpg}
+            \includegraphics[width=0.8\linewidth]{Taxonomy.jpg}
             \caption{Taxonomy of computational techniques for skin lesion segmentation utilized in this survey, categorizing methods from foundational CNNs to hybrid Mamba models.}
             \label{fig:taxonomy}
         \end{figure}
@@ -72,7 +71,7 @@
 
             \begin{figure}[H]
             \centering
-            \includegraphics[width=0.85\linewidth]{GAN.jpg}
+            \includegraphics[width=1\linewidth]{GAN.jpg}
             \caption{The flowchart of Dual Discriminator GAN architecture. After the generator module, there are two discrimination branches. One uses the concatenation of the generated mask and the original image as input, the integration is performed along the channel. The other just employs the generated mask as input.}
             \label{fig:GAN}
             \end{figure}
@@ -96,9 +95,9 @@
 
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=0.85\linewidth]{FCN.jpg}
+                \includegraphics[width=0.75\linewidth]{FCN.jpg}
                 \caption{The flowchart of U-Net like architecture bases on FCN model.}
-                \label{fig:FCN}
+                \label{fig: FCN}
             \end{figure}
 
         Another method is to optimize the training hyperparameters. The SegNet architecture, known for its memory-efficient utilising pooling indices, is highly sensitive to parameter initialization. Sahin et al. \cite{SegNet} introduced a Bayesian Optimized SegNet which replaces manual trial-and-error by Bayesian probability. Compared with standard SegNet implementations, the model achieved superior segmentation accuracy by automatically searching for the optimal learning rate compared to standard SegNet implementations. This approach has proved that in training process, it is vital to optimize not only the architectural designs but also the computational methods.
@@ -109,77 +108,80 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.85\linewidth]{UNet.jpg}
+            \includegraphics[width=1\linewidth]{UNet.jpg}
             \caption{The flowchart of Improved U-Net model with dialated convolution and batch normalization.}
-            \label{fig:UNet}
+            \label{fig: UNet}
         \end{figure}
 
-
-        The author \cite{Deeplab} introduced a hybrid model between RetinaNet and DeepLab incorporating a Graph-based refinement algorithm for post-processing. The RetinaNet backbone is responsible for extracting multi-scale features, while the DeepLab module employs atrous spatial pyramid pooling (ASPP) to capture context at multiple scales. The graph-based refinement step further enhances boundary accuracy by modeling pixel relationships as a graph, allowing for more precise delineation of lesion edges. By combining the object detection strength of RetinaNet, the semantic context of DeepLab, and the boundary precision of graph theory, the method overcomes the local view limitation of standard CNNs.
+        The author \cite{Deeplab} proposed a model that is the combination between RetinaNet and DeeplabV3+ named Retina-Deeplab. The RetinaNet creates sub-image normalized and centered by the lesion, and this image is segmented by the Deeplab module. Generally, the DeepLab architecture is based on a combination of Spatial Pyramid Pooling and Encoder-decoder networks architectures. DeeplabV3+ employs Atrous Spatial Pyramid Pooling to capture multi-scale context by applying dilated convolutions with varying rates in parallel and batch normalization.
 
     \subsection*{Feature Selection with Attention and Dynamic Mechanisms}
 
-        As network depth increases, the risk of learning redundant features (e.g., background artifacts like hair or gel) rises. To enable the network to "focus" on relevant regions, Attention Mechanisms were introduced.
+        As network depth increases, there are rising risks of learning redundant features (e.g., background artifacts like hair or gel), Attention Mechanisms were introduced to keep the model focused on relevant regions. Arora et al. \cite{AttentionGates} integrated Attention Gates (AGs) into the U-Net architecture. Each skip connection has a AG to distinguish feature responses in the irrelevant background regions with the high-level contextual information. By suppressing the activations in non-relevant areas, AGs enhance the model's ability to delineate fuzzy lesion boundaries, leading to better segmentation accuracy compared to standard U-Net.
 
-        Arora et al. \cite{AttentionGates} integrated Attention Gates (AGs) into the U-Net architecture. Unlike hard attention which crops images, AGs employ soft attention to automatically learn weight coefficients that suppress irrelevant background regions while highlighting feature-rich lesion areas. This mechanism allows the model to inherently filter out artifacts without explicit pre-processing.
-
-        Pushing the envelope of optimization further, recent works like CBAMSNet \cite{CBAMSNet} have combined attention with dynamic computation. This architecture integrates the Convolutional Block Attention Module (CBAM) to refine features along both channel and spatial dimensions. More importantly, it employs Omni-dimensional Dynamic Convolution (ODConv), where convolutional kernels are not static but dynamically adapt their weights based on the input image. This "dynamic" capability allows the network to be lightweight and computationally efficient while maintaining the flexibility to handle the high variability of skin lesion shapes.
+        CBAMSNet \cite{CBAMSNet}, a model combined attention with dynamic computation, integrates Convolutional Block Attention Module into U-Net architecture among skip connections to refine features along both channel and spatial dimensions. The features are then extracted using stable omni-dimensional dynamic convolution, where convolutional kernels are not static but dynamically change their weights based on the input image. Therefore, it is not only lightweight and computationally efficient, but also be able to maintain the flexibility to work with the wide variety of skin lesion.
 
 \section*{The Shift to Global Context with Hybrid Transformers}
 
-    While the optimized CNN architectures discussed in the previous section significantly improved boundary delineation, they remain bound by the inherent limitation of the convolution operation: the local receptive field. Even with dilated convolutions (as in DeepLab), CNNs struggle to capture long-range dependencies explicitly. In complex dermatological cases, where the diagnosis depends on the relationship between widely separated visual patterns, this local inductive bias becomes a bottleneck.
+    Although the optimized CNN architectures discussed in the previous section have considerably improved boundary delineation, each model remains disadvantages. The upsampling layer of FCN-based U-Net leads to the loss of spatial information. Improved U-Net and Deeplab models are still limited by the local nature of convolution operations, and attention-based models such as Attention U-Net and CBAMSNet are not capable of handling the context modeling limitations. Although ViTs have shown noticing advantages in various vision tasks by capturing long-range dependencies through self-attention mechanisms, these models require enormus datas to train and sometimes overlook fine-grained local details that are vital for image analysis.
+    
+    Therefore, the dominant strategy in medical imaging is the Hybrid Approach. A prime example is FAT-Net (Feature Adaptive Transformers) proposed by Wu et al. \cite{Transformer}, employing a Dual-Encoder Strategy contains both CNN and Transformer components with Memory-Efficient Decoder to fuse the local features and global context information extracted from the CNNs and transformer encoders. The architecture utilizes Feature Adaptive Module to adaptively activate relevant feature maps while suppressing noise. It is clear that FAT-Net outperforms pure CNN and pure Transformer models in skin lesion segmentation tasks, highlighting the effectiveness of combining local and global feature representations.
 
-    To address this, the second era of computational techniques is defined by the integration of Transformers, leveraging the Self-Attention mechanism to model global context.
-
-    \subsection*{Hybrid Architecture Strategy: The FAT-Net Case}
-
-        Pure Transformers (like the original ViT) often suffer from localized feature loss due to patch partitioning and require massive datasets to converge. Therefore, the dominant strategy in medical imaging is the Hybrid Approach.
-
-        A prime example is FAT-Net (Feature Adaptive Transformers) proposed by Wu et al. \cite{Transformer}. Instead of discarding the CNN entirely, FAT-Net employs a Dual-Encoder Strategy: 
-        
-            \begin{itemize} 
-                \item A ResNet-50 backbone is used to extract high-resolution spatial features. 
-                \item Transformer layers are embedded at the bottleneck to capture global semantic relationships.
-            \end{itemize}
-
-        The core computational innovation of FAT-Net is the Feature Adaptive Module (FAM). Recognizing that skin lesions often possess irregular shapes and varying sizes, the FAM utilizes channel attention to adaptively activate relevant feature maps while suppressing noise. Furthermore, to mitigate the high memory consumption typically associated with Transformers, the authors designed a Memory-Efficient Decoder. This structural optimization allows FAT-Net to achieve a superior Dice score compared to U-Net and Att-Unet, proving that combining the "local detail" of CNNs with the "global vision" of Transformers is more effective than using either in isolation.
 \section*{The Efficiency Revolution with State Space Models (Mamba)}
-    Despite the success of Hybrid Transformers, they come with a significant computational cost: the self-attention mechanism scales quadratically with image size ($O(N^2)$). This complexity renders them challenging to deploy on resource-constrained devices, such as mobile dermoscopy systems. In 2024, a paradigm shift occurred with the emergence of State Space Models (SSMs), specifically the Mamba architecture, which offers the global modeling capability of Transformers with linear computational complexity ($O(N)$).
-        \subsection*{The Adaptive Hybrid (AC-MambaSeg)}
-            Representing the fusion of CNN flexibility and Mamba efficiency, AC-MambaSeg \cite{Mamba} serves as a state-of-the-art benchmark. \textbf{Nguyen et al.} replaced the heavy convolutional backbone with Visual State Space (VSS) blocks. These blocks utilize a 2D Selective Scan (SS2D) mechanism to flatten the image into sequences and scan them in four directions, capturing global context without the quadratic cost of attention matrices.Crucially, AC-MambaSeg does not abandon the optimizations of the past. It integrates Attention Gates (from Era 1) in the skip connections and utilizes Selective Kernel (SK) modules to adaptively adjust the receptive field size. By synergizing the linear speed of Mamba with the feature-focusing capability of legacy attention mechanisms, AC-MambaSeg achieves a balance between high inference speed and segmentation accuracy.
-        \subsection*{The Ultimate Fusion (VM-SwinUnet)}
-            While AC-MambaSeg targets efficiency, VM-SwinUnet represents the pursuit of maximum accuracy through a "Super-Hybrid" design. This architecture combines Swin Transformer blocks with VSS (Mamba) blocks.The computational rationale here is complementary: Swin Transformers excel at extracting hierarchical features via shifted windows (local-to-global), while Mamba blocks model long-range dependencies across the entire image (global). This fusion mitigates the "local forgetting" problem of pure Mamba models and the heavy computational load of pure Transformers. Although more complex, VM-SwinUnet demonstrates that for critical diagnostic tasks where accuracy is paramount, integrating the strengths of CNNs, Transformers, and SSMs into a unified framework yields the best performance metrics.
+    Hybrid Transformers come with a significant computational cost when the complexity of self-attention mechanism reaches ($O(N^2)$), which is challenging to deploy on resource-constrained devices, such as mobile dermoscopy systems. In 2024, a paradigm shift occurred with the emergence of State Space Models (SSMs), specifically the Mamba architecture, which offers the global modeling capability of Transformers with linear computational complexity ($O(N)$).
+       
+    AC-MambaSeg \cite{Mamba}, representing the synthesis between the flexibility of CNN and the efficiency of Mamba, has replaced heavy convolution layers with Visual State Space blocks. These blocks can flatten input image in four directions, then capture the global context without the complexity of ($O(N^2)$). The efficiency is integrated by utilizing AGs and Selective Kernel modules, balancing the lite model with high speed and accuracy.
+
+    Another hybrid model designed for segmentation tasks is VM-SwinUnet \cite{VM-SwinUnet}. While Swin Transformer blocks work on feature extraction, Visual State Space blocks deal with boundary continuity, the model shows high performance on skin lesion and retinal vessels.
+
 \section*{Discussion \& Comparative Analysis}
-    The evolution from foundational CNNs to modern Mamba architectures illustrates a clear trajectory in computational optimization.
+    
+    Models like FCN-based and Improved U-Net concentrates on the solutions to local inductive bias of convolutions through structural addition such as dilated convolutions. While these methods succeed in boundary detection, they are not able to recognize large-scale patterns or separating complex artifacts from the skin lesions. Therefore, the application of Attention Mechanisms and Transformers has marked a transition towards the context awareness of skin segmentation. However, high accuracy comes with the cost of computational complexity up to $O(N^2)$, leading to the fact that many Hybrid Transformer models are unsuitable for real-time clinical usage. The emergence of Mamba architectures in 2024 represents a enormous breakthrough. By achieving global visualization with only linear complexity ($O(N)$), Mamba hybrids are capable of addressing the trade-off between precision and speed, paving the way for lightweight, mobile-compatible diagnostic systems, shown in \textbf{Table \ref{tab:pros_cons}}.   
+
     \begin{table}[H]
         \centering
-        \caption{Comparative Analysis of Computational Paradigms in Skin Lesion Segmentation based on Optimization Strategies.}
-        \label{tab:comparison}
+        \caption{Comparison of Deep Learning Architectures for Skin Lesion Segmentation: Optimization Strategies.}
+        \label{tab:pros_cons}
         \resizebox{\textwidth}{!}{%
-        \begin{tabular}{l l l p{4cm} l}
-        \toprule
-        \textbf{Paradigm} & \textbf{Model} & \textbf{Core Mechanism} & \textbf{Key Strength} & \textbf{Complexity} \\ 
-        \midrule
-        \textbf{Optimized CNN} & Improved U-Net & Structural Refinement & Precise Boundary Delineation & Low $\mathcal{O}(N)$ \\ 
-        & DeepLab & Atrous Convolution & Expanded Receptive Field & Low $\mathcal{O}(N)$ \\ 
-        \midrule
-        \textbf{Attention CNN} & Attention U-Net & Soft Attention Gates & Artifact Suppression (Hair/Gel) & Low $\mathcal{O}(N)$ \\ 
-        & CBAMSNet & ODConv + CBAM & Dynamic Feature Adaptation & Low $\mathcal{O}(N)$ \\ 
-        \midrule
-        \textbf{Hybrid Transformer} & FAT-Net & Self-Attention + FAM & Global Context Modeling & High $\mathcal{O}(N^2)$ \\ 
-        \midrule
-        \textbf{Hybrid Mamba} & AC-MambaSeg & VSS Block (Selective Scan) & Global Context with Linear Speed & \textbf{Linear $\mathcal{O}(N)$} \\ 
-        & VM-SwinUnet & Mamba + Swin Trans. & High-Performance Fusion & Moderate \\ 
-        \bottomrule
+        \begin{tabular}{|p{1.75cm}|p{2.75cm}|p{5.25cm}|p{5.25cm}|}
+        \hline
+        \textbf{Model Family} & \textbf{Core Technique} & \textbf{Pros (Strengths)} & \textbf{Cons (Limitations)} \\ 
+        \hline
+        \textbf{FCN-based U-Net} \newline \cite{FCN} & End-to-End FCN + U-Net & 
+        Lightweight computation and direct pixel-to-pixel learning from raw images. & 
+        Local view and may produce coarse boundaries without refinement steps. \\ 
+        \hline
+        \textbf{Adversarial CNNs (GANs)} \newline \cite{GAN} & Dual Discriminators (Global \& Local) & 
+        Solves data scarcity with synthesis and Adversarial loss enforces sharp boundaries through double scrutiny. & 
+        Hard to converge and risk of hallucinating artifacts in synthesized images. \\ 
+        \hline
+        \textbf{Improved U-Net} \newline \cite{UNet} & Dilated Convolution + Batch Norm & 
+        Expands receptive field without resolution loss and ensures a more stable training process. & 
+        Lacks of true global context modeling and struggles with large or irregular lesions. \\ 
+        \hline
+        \textbf{Retina-DeepLab} \newline \cite{Deeplab} & Detection-driven + Graph refinement & 
+        Coarse-to-fine strategy removes background noise efficiently. &
+        Dependends on the accuracy of the detection step. \\ 
+        \hline
+        \textbf{Attention CNNs} \newline \cite{CBAMSNet} & Attention Gates / CBAM + ODConv & 
+        Automatically suppresses artifacts (hair, gel) and is lightweight and adaptive to variable lesion shapes. & 
+        Constrained by the static nature of convolutions and performance depends on attention map quality. \\ 
+        \hline
+        \textbf{Hybrid Transformer} \newline \cite{Transformer} & Dual Encoder (CNN + ViT) & 
+        Captures long-range semantic dependencies (Global Context) and is robust against texture variations. & 
+        Quadratic computational complexity $O(N^2)$ and requires massive data to generalize. \\ 
+        \hline
+        \textbf{Hybrid Mamba} \newline \cite{Mamba} & State Space Models (Selective Scan) & 
+        Linear complexity $O(N)$ allows fast and balances global modeling with local CNN features. & 
+        Newer architecture with less community support and potential information loss in very long sequences. \\ 
+        \hline
         \end{tabular}%
         }
     \end{table}
-    
-\section*{Conclusion}
-    This review has traversed the landscape of computational techniques for skin lesion segmentation, categorizing them by their optimization objectives rather than mere chronology. We analyzed how GANs address data scarcity, how Optimized CNNs (e.g., FCN, DeepLab) refined structural and contextual learning, and how Transformers (FAT-Net) bridged the global context gap. Finally, we highlighted the 2024 breakthrough of Mamba architectures (AC-MambaSeg, VM-SwinUnet), which achieve linear complexity without compromising accuracy. We conclude that the future of automated melanoma diagnosis lies in Hybrid Systems—architectures that leverage the speed of Mamba, the precision of Transformers, and the localized focus of attention mechanisms to deliver real-time, clinically reliable diagnoses.
-\section*{Methods}
 
-Topical subheadings are allowed. Authors must ensure that their Methods section includes adequate experimental and characterization data \cite{FCN}necessary for others in the field to reproduce their work.
+\section*{Conclusion}
+    
+    The review shows the recent optimized computational techniques for skin lesion segmentation and categorizes them into enhancing objectives. We analyze how GAN architecture solves the scarcity of training data, how refined CNN addresses local contextual learning, and how hybrid ViT bridges the global context gap. Finally, we present the breakthrough of hybrid Mamba models achieving both linear complexity and impressive accuracy. In conclusion, the future of skin lesion segmentation will depend on hybrid architectures, which leverage the gold model U-Net the little complexity and high speed of Mamba, the precision of ViTs and the localized concentration of AG to generate real time, clinically reliable diagnoses.
 
 \bibliography{sample}
 

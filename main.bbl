@@ -120,4 +120,15 @@
   \doiprefix\url{https://doi.org/10.1007/978-3-031-76197-3_2}
   (\bibinfo{year}{2024}).
 
+\bibitem{VM-SwinUnet}
+\bibinfo{author}{Memon, Y.}, \bibinfo{author}{Zeng, F.} \&
+  \bibinfo{author}{Yao, L.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Vm-swinunet: Attention-guided deep
+  placental vessel network with mixture-of-experts for medical image
+  segmentation}}.
+\newblock {\emph{\JournalTitle{Biomedical Signal Processing and Control}}}
+  \textbf{\bibinfo{volume}{110}}, \bibinfo{pages}{108270},
+  \doiprefix\url{https://doi.org/10.1016/j.bspc.2025.108270}
+  (\bibinfo{year}{2025}).
+
 \end{thebibliography}
